@@ -11,8 +11,29 @@ function App() {
   });
 
   const addPoint = () => {
-    setScore(score.currentScore + 1);
+    const updatedScore = score.currentScore + 1;
+    if (updatedScore > score.bestScore) {
+      addCurrentAndBestScore(updatedScore);
+    } else {
+      addCurrentScore(updatedScore);
+    }
   };
+
+  const addCurrentScore = (updatedScore) => {
+    setScore({
+      ...score,
+      currentScore: updatedScore,
+    });
+  };
+
+  const addCurrentAndBestScore = (updatedScore) => {
+    setScore({
+      ...score,
+      currentScore: updatedScore,
+      bestScore: updatedScore,
+    });
+  };
+
   return (
     <div className="App">
       <Header score={score} />
