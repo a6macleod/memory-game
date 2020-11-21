@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Header = () => {
-  const [score, setScore] = useState({
-    currentScore: 0,
-    bestScore: 0,
-  });
+const Header = (props) => {
   return (
     <div className="header">
       <h1>Memory!</h1>
+      <div className="score-container">
+        <h4>Score: {props.score.currentScore}</h4>
+        <h4>Highest Score: {props.score.bestScore}</h4>
+      </div>
     </div>
   );
 };
