@@ -10,6 +10,14 @@ function App() {
     bestScore: 0,
   });
 
+  const endRound = () => {
+    console.log("round ended!");
+    setScore({
+      ...score,
+      currentScore: 0,
+    });
+  };
+
   const addPoint = () => {
     const updatedScore = score.currentScore + 1;
     if (updatedScore > score.bestScore) {
@@ -37,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <Header score={score} />
-      <Cards addPoint={addPoint} />
+      <Cards addPoint={addPoint} endRound={endRound} />
       <Footer />
     </div>
   );
