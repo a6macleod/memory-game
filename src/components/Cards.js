@@ -64,31 +64,34 @@ const Cards = (props) => {
     },
   ]);
 
-  function handleClick(item) {
+  function checkIfClicked(item) {
     if (item.clicked === false) {
-      setCardOrder(...cardOrder, (item.clicked = true));
-      console.log(item.name, item.clicked);
-    } else {
-      console.log(item.name, item.clicked);
+      item.clicked = true;
+      props.addPoint();
     }
+    resortCards();
+    // console.log(cardOrder);
   }
 
-  function shuffleArray(array) {
-    const newArray = array;
-    newArray.sort((a, b) => (a.index > b.index ? 1 : -1));
-    return newArray;
+  function resortCards() {
+    const sortedCards = cardOrder.slice();
+    sortedCards.forEach((card) => (card.index = Math.random() * 100));
+    sortedCards.sort((a, b) => (a.index > b.index ? 1 : -1));
+    console.log(sortedCards);
+    setCardOrder(sortedCards);
   }
 
-  // shuffled order, don't update State (no re-render)
-  shuffleArray(cardOrder);
-
+  // resortCards();
   return (
     <div className="Cards">
       <p>random cards go here!</p>
       <div className="button" onClick={props.addPoint}>
         Add a point!
       </div>
-      <div className="card 0" onClick={() => handleClick(cardOrder[0])}>
+      <div className="button" onClick={() => resortCards()}>
+        Re-order the list!
+      </div>
+      <div className="card 0" onClick={() => checkIfClicked(cardOrder[0])}>
         {cardOrder[0].name}
       </div>
       <div className="card 1">{cardOrder[1].name}</div>
