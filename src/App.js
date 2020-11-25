@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cards from "./components/Cards";
+// images
+import imgZero from "./images/imgZero.jpg";
+import imgOne from "./images/imgOne.jpg";
+import imgTwo from "./images/imgTwo.jpg";
+import imgThree from "./images/imgThree.jpg";
+import imgFour from "./images/imgFour.jpg";
+import imgFive from "./images/imgFive.jpg";
+import imgSix from "./images/imgSix.jpg";
+import imgSeven from "./images/imgSeven.jpg";
+import imgEight from "./images/imgEight.jpg";
+import imgNine from "./images/imgNine.jpg";
+import imgTen from "./images/imgTen.jpg";
+import imgEleven from "./images/imgEleven.jpg";
 
 function App() {
   const [score, setScore] = useState({
@@ -13,68 +26,85 @@ function App() {
   const [cardOrder, setCardOrder] = useState([
     {
       index: Math.random() * 100,
-      name: "first",
+      name: "zero",
       clicked: false,
+      img: imgZero,
     },
     {
       index: Math.random() * 100,
-      name: "Second",
+      name: "one",
       clicked: false,
+      img: imgOne,
     },
     {
       index: Math.random() * 100,
-      name: "Third",
+      name: "two",
       clicked: false,
+      img: imgTwo,
     },
     {
       index: Math.random() * 100,
-      name: "Fourth",
+      name: "three",
       clicked: false,
+      img: imgThree,
     },
     {
       index: Math.random() * 100,
-      name: "Fith",
+      name: "four",
       clicked: false,
+      img: imgFour,
     },
     {
       index: Math.random() * 100,
-      name: "Sixth",
+      name: "five",
       clicked: false,
+      img: imgFive,
     },
     {
       index: Math.random() * 100,
-      name: "Seventh",
+      name: "six",
       clicked: false,
+      img: imgSix,
     },
     {
       index: Math.random() * 100,
-      name: "Eighth",
+      name: "seven",
       clicked: false,
+      img: imgSeven,
     },
     {
       index: Math.random() * 100,
-      name: "Ninth",
+      name: "eight",
       clicked: false,
+      img: imgEight,
     },
     {
       index: Math.random() * 100,
-      name: "Tenth",
+      name: "nine",
       clicked: false,
+      img: imgNine,
     },
     {
       index: Math.random() * 100,
-      name: "Eleventh",
+      name: "ten",
       clicked: false,
+      img: imgTen,
     },
     {
       index: Math.random() * 100,
-      name: "Twelth",
+      name: "eleven",
       clicked: false,
+      img: imgEleven,
     },
   ]);
 
+  // Shuffles the cards 1x on load
+  useEffect(() => {
+    resortCards();
+  }, []);
+
   // card functions
-  function checkIfClicked(item) {
+  const checkIfClicked = (item) => {
     if (item.clicked) {
       resetClickedCards();
       endRound();
@@ -83,20 +113,21 @@ function App() {
       addPoint();
     }
     resortCards();
-  }
+  };
 
-  function resetClickedCards() {
+  const resetClickedCards = () => {
     const resetCards = cardOrder.slice();
     resetCards.forEach((card) => (card.clicked = false));
-  }
+  };
 
-  function resortCards() {
+  const resortCards = () => {
     const sortedCards = cardOrder.slice();
     sortedCards.forEach((card) => (card.index = Math.random() * 100));
     sortedCards.sort((a, b) => (a.index > b.index ? 1 : -1));
     setCardOrder(sortedCards);
-  }
+  };
 
+  // score keeping functions
   const endRound = () => {
     setScore({
       ...score,
