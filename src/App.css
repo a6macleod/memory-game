@@ -2,6 +2,10 @@
 	background-color: #c6d5f3;
 }
 
+.directions {
+	margin-top: 30px;
+}
+
 .score-container {
 	text-align: right;
 }
