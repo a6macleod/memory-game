@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+// CSS
+// import "./css-reset.css";
 import "./App.css";
+// components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cards from "./components/Cards";
@@ -173,15 +176,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header score={score} />
-      <Cards
-        addPoint={addPoint}
-        endRound={endRound}
-        cardOrder={cardOrder}
-        checkIfClicked={checkIfClicked}
-        resortCards={resortCards}
-      />
-      <Footer />
+      <div className="container">
+        <Header score={score} />
+        <Cards
+          addPoint={addPoint}
+          endRound={endRound}
+          cardOrder={cardOrder}
+          checkIfClicked={checkIfClicked}
+          resortCards={resortCards}
+        />
+        <Footer />
+      </div>
     </div>
   );
 }

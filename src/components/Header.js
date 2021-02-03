@@ -4,10 +4,12 @@ const Header = (props) => {
   return (
     <div className="header">
       <h1>Memory!</h1>
-      <p className="directions">Don't click the same picture twice!</p>
       <div className="score-container">
         <h4>Score: {props.score.currentScore}</h4>
-        <h4>Highest Score: {props.score.bestScore}</h4>
+        <h4>Best Score: {props.score.bestScore}</h4>
+        <a href="#" className="directions">
+          Directions
+        </a>
       </div>
     </div>
   );
