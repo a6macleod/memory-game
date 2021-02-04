@@ -23,7 +23,7 @@ import imgEleven from "./images/imgEleven.jpg";
 
 function App() {
   const [showDirections, setShowDirections] = useState({
-    show: true,
+    show: false,
   });
 
   const [score, setScore] = useState({
