@@ -18,6 +18,8 @@ Then push the new build folder to the gh-pages branch on github
 npm run deploy
 ```
 
+To host this react app on github pages the dev dependency gh-pages is used. The "deploy" script in package.json runs the dependency to build and push to a gh-pages branch on github.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
