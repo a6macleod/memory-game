@@ -17,6 +17,8 @@ body {
 
 .App {
 	font-size: 16px;
+	background: linear-gradient(hsl(0, 10%, 90%), hsl(40, 10%, 85%));
+	min-height: 100vh;
 }
 
 /* four cards wide - max width for game cards */
@@ -46,7 +48,7 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 12px 100px;
+	padding: 12px 100px 0 100px;
 }
 
 .header h1 {
@@ -63,16 +65,25 @@ body {
 	padding-bottom: 5px;
 }
 
-.header a {
-	display: block;
-	margin-top: 12px;
-	font-size: 12px;
-	text-decoration: none;
-	color: hsl(0, 20%, 15%);
+.score-container span {
+	font-weight: bold;
 }
 
-.header a:hover {
-	text-decoration: underline;
+.header .directions-button {
+	margin-top: 12px;
+	font-size: 12px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	text-decoration: none;
+	color: hsl(0, 20%, 15%);
+	border: solid 1px hsla(0, 0%, 0%, 0%);
+	background-color: hsl(0, 10%, 90%);
+}
+
+.header .directions-button:hover {
+	background-color: hsl(110, 50%, 70%);
+	border: solid 1px hsl(110, 90%, 20%);
+	color: hsl(110, 100%, 10%);
 }
 
 /* Cards Component */
@@ -141,6 +152,43 @@ img {
 	}
 }
 
+/* Directions Component */
+.directions-container {
+	margin-top: 40px;
+	margin-bottom: 60px;
+}
+
+.directions-container,
+.directions {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.directions-container h2 {
+	font-size: 20px;
+}
+
+.directions {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	max-width: 30em;
+}
+
+.directions p {
+	line-height: 2;
+	margin-bottom: 20px;
+}
+
+.directions button {
+	padding: 10px 20px;
+	font-size: 18px;
+	border-radius: 10px;
+	background-color: hsl(110, 50%, 70%);
+	border: solid 1px hsl(110, 90%, 20%);
+	color: hsl(110, 100%, 10%);
+}
+
 /* Footer component */
 .footer {
 	display: flex;
@@ -150,4 +198,11 @@ img {
 
 .footer a {
 	padding-left: 5px;
+	color: hsl(0, 20%, 15%);
+	text-decoration: none;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+	color: hsl(220, 90%, 50%);
 }

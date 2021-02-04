@@ -6,6 +6,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cards from "./components/Cards";
+import Directions from "./components/Directions";
 // images
 import imgZero from "./images/imgZero.jpg";
 import imgOne from "./images/imgOne.jpg";
@@ -21,6 +22,10 @@ import imgTen from "./images/imgTen.jpg";
 import imgEleven from "./images/imgEleven.jpg";
 
 function App() {
+  const [showDirections, setShowDirections] = useState({
+    show: true,
+  });
+
   const [score, setScore] = useState({
     currentScore: 0,
     bestScore: 0,
@@ -106,6 +111,13 @@ function App() {
     resortCards();
   }, []);
 
+  // pop up for directions and best score
+  const toggleDirections = () => {
+    setShowDirections({
+      show: !showDirections.show,
+    });
+  };
+
   // card functions
   const checkIfClicked = (item) => {
     if (item.clicked) {
@@ -177,14 +189,18 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Header score={score} />
-        <Cards
-          addPoint={addPoint}
-          endRound={endRound}
-          cardOrder={cardOrder}
-          checkIfClicked={checkIfClicked}
-          resortCards={resortCards}
-        />
+        <Header score={score} toggleDirections={toggleDirections} />
+        {showDirections.show ? (
+          <Directions toggleDirections={toggleDirections} />
+        ) : (
+          <Cards
+            addPoint={addPoint}
+            endRound={endRound}
+            cardOrder={cardOrder}
+            checkIfClicked={checkIfClicked}
+            resortCards={resortCards}
+          />
+        )}
         <Footer />
       </div>
     </div>
