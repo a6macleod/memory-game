@@ -1,3 +1,23 @@
+MEMORY GAME
+
+The goal of this game is to click the images one time. Each time an image is clicked all the images will reorder. Click all twelve images exactly one time and you win!
+
+This was a project taken from The Odin Project curriculum (https://www.theodinproject.com/courses/javascript/lessons/memory-card). The learning goal for this was to practice creating applications using create-react-app, React Hooks, and passing state to other components.
+
+To update the github pages environment, first make changes and push them to the master branch.
+
+Then re-build the the changes
+
+```shell
+npm run build
+```
+
+Then push the new build folder to the gh-pages branch on github
+
+```shell
+npm run deploy
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
