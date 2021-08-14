@@ -1,92 +1,15 @@
-MEMORY GAME
+# MEMORY GAME
 
-The goal of this game is to click the images one time. Each time an image is clicked all the images will reorder. Click all twelve images exactly one time and you win!
+This project was created using React. The goal to practice building a small React application using hooks for state, and passing state to other components
 
-This was a project taken from The Odin Project curriculum (https://www.theodinproject.com/courses/javascript/lessons/memory-card). The learning goal for this was to practice creating applications using create-react-app, React Hooks, and passing state to other components.
+This was a project taken from [The Odin Project curriculum](https://www.theodinproject.com/courses/javascript/lessons/memory-card).
 
-To update the github pages environment, first make changes and push them to the master branch.
+## How the game works
 
-Then re-build the the changes
+The goal of this game is to click all the images only one time. Each time an image is clicked all the images will reorder. Click all twelve images exactly one time and you win!
 
-```shell
-npm run build
-```
+## Keeping Score
 
-Then push the new build folder to the gh-pages branch on github
+At the top of the page the current score is kept. Each time you click an image for the first time your current score will increase.
 
-```shell
-npm run deploy
-```
-
-To host this react app on github pages the dev dependency gh-pages is used. The "deploy" script in package.json runs the dependency to build and push to a gh-pages branch on github.
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you are playing for the first time or you are reaching your highest score, the "best score" will also increase with your "score". But if you click a picture twice, your best score will remain while your score will reset to zero.
