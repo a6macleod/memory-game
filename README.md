@@ -1,8 +1,6 @@
 # MEMORY GAME
 
-This project was created using React. The goal to practice building a small React application using hooks for state, and passing state to other components
-
-This was a project taken from [The Odin Project curriculum](https://www.theodinproject.com/courses/javascript/lessons/memory-card).
+This project was created using React. The goal was to practice using hooks for state, and passing state to other components
 
 ## How the game works
 
