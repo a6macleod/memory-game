@@ -4,8 +4,9 @@ import "./App.css";
 // components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Cards from "./components/Cards";
+import Gameboard from "./components/Gameboard";
 import Directions from "./components/Directions";
+import cardShuffler from "./utils/cardShuffler"
 // images
 import imgZero from "./images/imgZero.jpg";
 import imgOne from "./images/imgOne.jpg";
@@ -20,6 +21,7 @@ import imgNine from "./images/imgNine.jpg";
 import imgTen from "./images/imgTen.jpg";
 import imgEleven from "./images/imgEleven.jpg";
 
+
 function App() {
   const [showDirections, setShowDirections] = useState({
     show: false,
@@ -30,92 +32,80 @@ function App() {
     bestScore: 0,
   });
 
-  const [cardOrder, setCardOrder] = useState([
-    {
-      index: Math.random() * 100,
-      name: "zero",
-      clicked: false,
-      img: imgZero,
-    },
-    {
-      index: Math.random() * 100,
-      name: "one",
-      clicked: false,
-      img: imgOne,
-    },
-    {
-      index: Math.random() * 100,
-      name: "two",
-      clicked: false,
-      img: imgTwo,
-    },
-    {
-      index: Math.random() * 100,
-      name: "three",
-      clicked: false,
-      img: imgThree,
-    },
-    {
-      index: Math.random() * 100,
-      name: "four",
-      clicked: false,
-      img: imgFour,
-    },
-    {
-      index: Math.random() * 100,
-      name: "five",
-      clicked: false,
-      img: imgFive,
-    },
-    {
-      index: Math.random() * 100,
-      name: "six",
-      clicked: false,
-      img: imgSix,
-    },
-    {
-      index: Math.random() * 100,
-      name: "seven",
-      clicked: false,
-      img: imgSeven,
-    },
-    {
-      index: Math.random() * 100,
-      name: "eight",
-      clicked: false,
-      img: imgEight,
-    },
-    {
-      index: Math.random() * 100,
-      name: "nine",
-      clicked: false,
-      img: imgNine,
-    },
-    {
-      index: Math.random() * 100,
-      name: "ten",
-      clicked: false,
-      img: imgTen,
-    },
-    {
-      index: Math.random() * 100,
-      name: "eleven",
-      clicked: false,
-      img: imgEleven,
-    },
-  ]);
-
-  // Shuffles the cards 1x on load
-  useEffect(() => {
-    resortCards();
-  }, []);
-
-  // pop up for directions and best score
-  const toggleDirections = () => {
-    setShowDirections({
-      show: !showDirections.show,
-    });
-  };
+const [cardOrder, setCardOrder] = useState([
+  {
+    index: Math.random() * 100,
+    name: "zero",
+    clicked: false,
+    img: imgZero,
+  },
+  {
+    index: Math.random() * 100,
+    name: "one",
+    clicked: false,
+    img: imgOne,
+  },
+  {
+    index: Math.random() * 100,
+    name: "two",
+    clicked: false,
+    img: imgTwo,
+  },
+  {
+    index: Math.random() * 100,
+    name: "three",
+    clicked: false,
+    img: imgThree,
+  },
+  {
+    index: Math.random() * 100,
+    name: "four",
+    clicked: false,
+    img: imgFour,
+  },
+  {
+    index: Math.random() * 100,
+    name: "five",
+    clicked: false,
+    img: imgFive,
+  },
+  {
+    index: Math.random() * 100,
+    name: "six",
+    clicked: false,
+    img: imgSix,
+  },
+  {
+    index: Math.random() * 100,
+    name: "seven",
+    clicked: false,
+    img: imgSeven,
+  },
+  {
+    index: Math.random() * 100,
+    name: "eight",
+    clicked: false,
+    img: imgEight,
+  },
+  {
+    index: Math.random() * 100,
+    name: "nine",
+    clicked: false,
+    img: imgNine,
+  },
+  {
+    index: Math.random() * 100,
+    name: "ten",
+    clicked: false,
+    img: imgTen,
+  },
+  {
+    index: Math.random() * 100,
+    name: "eleven",
+    clicked: false,
+    img: imgEleven,
+  },
+]);
 
   // card functions
   const checkIfClicked = (item) => {
@@ -126,19 +116,24 @@ function App() {
       item.clicked = true;
       addPoint();
     }
-    resortCards();
+    setCardOrder(cardShuffler(cardOrder));
   };
 
-  const resetClickedCards = () => {
+const resetClickedCards = () => {
     const resetCards = cardOrder.slice();
     resetCards.forEach((card) => (card.clicked = false));
   };
 
-  const resortCards = () => {
-    const sortedCards = cardOrder.slice();
-    sortedCards.forEach((card) => (card.index = Math.random() * 100));
-    sortedCards.sort((a, b) => (a.index > b.index ? 1 : -1));
-    setCardOrder(sortedCards);
+  // Shuffles the cards 1x on load
+  useEffect(() => {
+    setCardOrder(cardShuffler(cardOrder));
+  }, []);
+
+  // pop up for directions and best score
+  const toggleDirections = () => {
+    setShowDirections({
+      show: !showDirections.show,
+    });
   };
 
   // score keeping functions
@@ -192,12 +187,11 @@ function App() {
         {showDirections.show ? (
           <Directions toggleDirections={toggleDirections} />
         ) : (
-          <Cards
+          <Gameboard
             addPoint={addPoint}
             endRound={endRound}
             cardOrder={cardOrder}
             checkIfClicked={checkIfClicked}
-            resortCards={resortCards}
           />
         )}
         <Footer />
