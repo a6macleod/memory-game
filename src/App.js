@@ -6,7 +6,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Gameboard from "./components/Gameboard";
 import Directions from "./components/Directions";
+// card handlers
 import cardShuffler from "./utils/cardShuffler"
+import resetClickedCards from "./utils/resetClickedCards"
 // images
 import imgZero from "./images/imgZero.jpg";
 import imgOne from "./images/imgOne.jpg";
@@ -32,85 +34,85 @@ function App() {
     bestScore: 0,
   });
 
-const [cardOrder, setCardOrder] = useState([
-  {
-    index: Math.random() * 100,
-    name: "zero",
-    clicked: false,
-    img: imgZero,
-  },
-  {
-    index: Math.random() * 100,
-    name: "one",
-    clicked: false,
-    img: imgOne,
-  },
-  {
-    index: Math.random() * 100,
-    name: "two",
-    clicked: false,
-    img: imgTwo,
-  },
-  {
-    index: Math.random() * 100,
-    name: "three",
-    clicked: false,
-    img: imgThree,
-  },
-  {
-    index: Math.random() * 100,
-    name: "four",
-    clicked: false,
-    img: imgFour,
-  },
-  {
-    index: Math.random() * 100,
-    name: "five",
-    clicked: false,
-    img: imgFive,
-  },
-  {
-    index: Math.random() * 100,
-    name: "six",
-    clicked: false,
-    img: imgSix,
-  },
-  {
-    index: Math.random() * 100,
-    name: "seven",
-    clicked: false,
-    img: imgSeven,
-  },
-  {
-    index: Math.random() * 100,
-    name: "eight",
-    clicked: false,
-    img: imgEight,
-  },
-  {
-    index: Math.random() * 100,
-    name: "nine",
-    clicked: false,
-    img: imgNine,
-  },
-  {
-    index: Math.random() * 100,
-    name: "ten",
-    clicked: false,
-    img: imgTen,
-  },
-  {
-    index: Math.random() * 100,
-    name: "eleven",
-    clicked: false,
-    img: imgEleven,
-  },
-]);
+  const [cardOrder, setCardOrder] = useState([
+    {
+      index: Math.random() * 100,
+      name: "zero",
+      clicked: false,
+      img: imgZero,
+    },
+    {
+      index: Math.random() * 100,
+      name: "one",
+      clicked: false,
+      img: imgOne,
+    },
+    {
+      index: Math.random() * 100,
+      name: "two",
+      clicked: false,
+      img: imgTwo,
+    },
+    {
+      index: Math.random() * 100,
+      name: "three",
+      clicked: false,
+      img: imgThree,
+    },
+    {
+      index: Math.random() * 100,
+      name: "four",
+      clicked: false,
+      img: imgFour,
+    },
+    {
+      index: Math.random() * 100,
+      name: "five",
+      clicked: false,
+      img: imgFive,
+    },
+    {
+      index: Math.random() * 100,
+      name: "six",
+      clicked: false,
+      img: imgSix,
+    },
+    {
+      index: Math.random() * 100,
+      name: "seven",
+      clicked: false,
+      img: imgSeven,
+    },
+    {
+      index: Math.random() * 100,
+      name: "eight",
+      clicked: false,
+      img: imgEight,
+    },
+    {
+      index: Math.random() * 100,
+      name: "nine",
+      clicked: false,
+      img: imgNine,
+    },
+    {
+      index: Math.random() * 100,
+      name: "ten",
+      clicked: false,
+      img: imgTen,
+    },
+    {
+      index: Math.random() * 100,
+      name: "eleven",
+      clicked: false,
+      img: imgEleven,
+    },
+  ]);
 
   // card functions
   const checkIfClicked = (item) => {
     if (item.clicked) {
-      resetClickedCards();
+      setCardOrder(resetClickedCards(cardOrder));
       endRound();
     } else {
       item.clicked = true;
@@ -119,10 +121,10 @@ const [cardOrder, setCardOrder] = useState([
     setCardOrder(cardShuffler(cardOrder));
   };
 
-const resetClickedCards = () => {
-    const resetCards = cardOrder.slice();
-    resetCards.forEach((card) => (card.clicked = false));
-  };
+  // const resetClickedCards = () => {
+  //   const resetCards = cardOrder.slice();
+  //   resetCards.forEach((card) => (card.clicked = false));
+  // };
 
   // Shuffles the cards 1x on load
   useEffect(() => {
@@ -145,7 +147,7 @@ const resetClickedCards = () => {
   };
 
   const endGame = () => {
-    resetClickedCards();
+    setCardOrder(resetClickedCards(cardOrder));
     setScore({
       bestScore: 0,
       currentScore: 0,
