@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import Gameboard from "./components/Gameboard";
 import Directions from "./components/Directions";
 // card handlers
-import cardShuffler from "./utils/cardShuffler"
+import cardHandlers from "./utils/cardHandlers"
 import resetClickedCards from "./utils/resetClickedCards"
 // images
 import imgZero from "./images/imgZero.jpg";
@@ -110,25 +110,33 @@ function App() {
   ]);
 
   // card functions
-  const checkIfClicked = (item) => {
-    if (item.clicked) {
-      setCardOrder(resetClickedCards(cardOrder));
+  const checkIfClicked = (card) => {
+    if (card.clicked) {
+      setCardOrder(cardHandlers.resetClickedCards(cardOrder));
       endRound();
+      console.log(card);
     } else {
-      item.clicked = true;
+      card.clicked = true;
       addPoint();
     }
-    setCardOrder(cardShuffler(cardOrder));
+    setCardOrder(cardHandlers.shuffleCards(cardOrder));
   };
 
-  // const resetClickedCards = () => {
-  //   const resetCards = cardOrder.slice();
-  //   resetCards.forEach((card) => (card.clicked = false));
+   // card functions
+  //  const checkIfClicked = (item) => {
+  //   if (item.clicked) {
+  //     setCardOrder(resetClickedCards(cardOrder));
+  //     endRound();
+  //   } else {
+  //     item.clicked = true;
+  //     addPoint();
+  //   }
+  //   setCardOrder(cardShuffler(cardOrder));
   // };
 
   // Shuffles the cards 1x on load
   useEffect(() => {
-    setCardOrder(cardShuffler(cardOrder));
+    setCardOrder(cardHandlers.shuffleCards(cardOrder));
   }, []);
 
   // pop up for directions and best score
@@ -147,7 +155,7 @@ function App() {
   };
 
   const endGame = () => {
-    setCardOrder(resetClickedCards(cardOrder));
+    setCardOrder(cardHandlers.resetClickedCards(cardOrder));
     setScore({
       bestScore: 0,
       currentScore: 0,
