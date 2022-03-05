@@ -7,8 +7,7 @@ import Footer from "./components/Footer";
 import Gameboard from "./components/Gameboard";
 import Directions from "./components/Directions";
 // card handlers
-import cardHandlers from "./utils/cardHandlers"
-import resetClickedCards from "./utils/resetClickedCards"
+import cardHandlers from "./utils/cardHandlers";
 // images
 import imgZero from "./images/imgZero.jpg";
 import imgOne from "./images/imgOne.jpg";
