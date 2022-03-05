@@ -109,17 +109,28 @@ function App() {
   ]);
 
   // card functions
-  const checkIfClicked = (card) => {
-    if (card.clicked) {
-      setCardOrder(cardHandlers.resetClickedCards(cardOrder));
-      endRound();
-      console.log(card);
+  function checkIfClicked(card) {
+    if (!card.clicked) {
+      clickCard(card);
     } else {
-      card.clicked = true;
-      addPoint();
+      cardWasAlreadyClicked();
     }
     setCardOrder(cardHandlers.shuffleCards(cardOrder));
   };
+
+  function clickCard(card) {
+    markCardAsClicked(card);
+    addPoint();
+  }
+
+  function cardWasAlreadyClicked() {
+    setCardOrder(cardHandlers.resetClickedCards(cardOrder));
+    endRound();
+  }
+
+  function markCardAsClicked(card) {
+    setCardOrder(...cardOrder, card.clicked = true);
+  }
 
    // card functions
   //  const checkIfClicked = (item) => {
@@ -133,10 +144,10 @@ function App() {
   //   setCardOrder(cardShuffler(cardOrder));
   // };
 
-  // Shuffles the cards 1x on load
+  // Shuffles the cards 1x on load and after cards stat is updated.
   useEffect(() => {
     setCardOrder(cardHandlers.shuffleCards(cardOrder));
-  }, []);
+  }, [cardOrder]);
 
   // pop up for directions and best score
   const toggleDirections = () => {
