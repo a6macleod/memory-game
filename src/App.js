@@ -8,20 +8,6 @@ import Gameboard from "./components/Gameboard";
 import Directions from "./components/Directions";
 // card handlers
 import cardHandlers from "./utils/cardHandlers";
-// images
-import imgZero from "./images/imgZero.jpg";
-import imgOne from "./images/imgOne.jpg";
-import imgTwo from "./images/imgTwo.jpg";
-import imgThree from "./images/imgThree.jpg";
-import imgFour from "./images/imgFour.jpg";
-import imgFive from "./images/imgFive.jpg";
-import imgSix from "./images/imgSix.jpg";
-import imgSeven from "./images/imgSeven.jpg";
-import imgEight from "./images/imgEight.jpg";
-import imgNine from "./images/imgNine.jpg";
-import imgTen from "./images/imgTen.jpg";
-import imgEleven from "./images/imgEleven.jpg";
-
 
 function App() {
   const [showDirections, setShowDirections] = useState({
@@ -33,80 +19,7 @@ function App() {
     bestScore: 0,
   });
 
-  const [cardOrder, setCardOrder] = useState([
-    {
-      index: Math.random() * 100,
-      name: "zero",
-      clicked: false,
-      img: imgZero,
-    },
-    {
-      index: Math.random() * 100,
-      name: "one",
-      clicked: false,
-      img: imgOne,
-    },
-    {
-      index: Math.random() * 100,
-      name: "two",
-      clicked: false,
-      img: imgTwo,
-    },
-    {
-      index: Math.random() * 100,
-      name: "three",
-      clicked: false,
-      img: imgThree,
-    },
-    {
-      index: Math.random() * 100,
-      name: "four",
-      clicked: false,
-      img: imgFour,
-    },
-    {
-      index: Math.random() * 100,
-      name: "five",
-      clicked: false,
-      img: imgFive,
-    },
-    {
-      index: Math.random() * 100,
-      name: "six",
-      clicked: false,
-      img: imgSix,
-    },
-    {
-      index: Math.random() * 100,
-      name: "seven",
-      clicked: false,
-      img: imgSeven,
-    },
-    {
-      index: Math.random() * 100,
-      name: "eight",
-      clicked: false,
-      img: imgEight,
-    },
-    {
-      index: Math.random() * 100,
-      name: "nine",
-      clicked: false,
-      img: imgNine,
-    },
-    {
-      index: Math.random() * 100,
-      name: "ten",
-      clicked: false,
-      img: imgTen,
-    },
-    {
-      index: Math.random() * 100,
-      name: "eleven",
-      clicked: false,
-      img: imgEleven,
-    },
-  ]);
+  const [cardOrder, setCardOrder] = useState(cardHandlers.cardBuilder);
 
   // card functions
   function checkIfClicked(card) {

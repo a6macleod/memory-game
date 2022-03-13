@@ -1,3 +1,5 @@
+import allImages from './imagesImporter'
+
 const cardHandlers = {
 
   shuffleCards: (cards) => {
@@ -7,6 +9,20 @@ const cardHandlers = {
 
   resetClickedCards: (cards) => {
     return cards.forEach((card) => (card.clicked = false));
+  },
+
+  cardBuilder: () => {
+    let newCards = [];
+    allImages.forEach(image => {
+      newCards.push(
+        {
+          index: Math.random() * 100,
+          clicked: false,
+          img: image,
+        }
+      )}
+    );
+    return newCards
   }
 }
 
