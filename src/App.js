@@ -19,7 +19,7 @@ function App() {
     bestScore: 0,
   });
 
-  const [cardOrder, setCardOrder] = useState(cardHandlers.cardBuilder);
+  const [allCards, setallCards] = useState(cardHandlers.cardBuilder);
 
   // card functions
   function checkIfClicked(card) {
@@ -28,7 +28,7 @@ function App() {
     } else {
       cardWasAlreadyClicked();
     }
-    setCardOrder(cardHandlers.shuffleCards(cardOrder));
+    setallCards(cardHandlers.shuffleCards(allCards));
   };
 
   function clickCard(card) {
@@ -37,30 +37,30 @@ function App() {
   }
 
   function cardWasAlreadyClicked() {
-    setCardOrder(cardHandlers.resetClickedCards(cardOrder));
+    setallCards(cardHandlers.resetClickedCards(allCards));
     endRound();
   }
 
   function markCardAsClicked(card) {
-    setCardOrder(...cardOrder, card.clicked = true);
+    setallCards(...allCards, card.clicked = true);
   }
 
    // card functions
   //  const checkIfClicked = (item) => {
   //   if (item.clicked) {
-  //     setCardOrder(resetClickedCards(cardOrder));
+  //     setallCards(resetClickedCards(allCards));
   //     endRound();
   //   } else {
   //     item.clicked = true;
   //     addPoint();
   //   }
-  //   setCardOrder(cardShuffler(cardOrder));
+  //   setallCards(cardShuffler(allCards));
   // };
 
   // Shuffles the cards 1x on load and after cards stat is updated.
   useEffect(() => {
-    setCardOrder(cardHandlers.shuffleCards(cardOrder));
-  }, [cardOrder]);
+    setallCards(cardHandlers.shuffleCards(allCards));
+  }, [allCards]);
 
   // pop up for directions and best score
   const toggleDirections = () => {
@@ -78,7 +78,7 @@ function App() {
   };
 
   const endGame = () => {
-    setCardOrder(cardHandlers.resetClickedCards(cardOrder));
+    setallCards(cardHandlers.resetClickedCards(allCards));
     setScore({
       bestScore: 0,
       currentScore: 0,
@@ -123,7 +123,7 @@ function App() {
           <Gameboard
             addPoint={addPoint}
             endRound={endRound}
-            cardOrder={cardOrder}
+            allCards={allCards}
             checkIfClicked={checkIfClicked}
           />
         )}
