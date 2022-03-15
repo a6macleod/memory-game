@@ -60,20 +60,13 @@ function App() {
 
   const checkIfNewBestScore = (newScore) => {
     if (newScore > score.bestScore) {
-      addCurrentAndBestScore(newScore);
+      updateCurrentAndBestScore(newScore);
     } else {
-      addCurrentScore(newScore);
+      updateCurrentScore(newScore);
     }
-  }
-
-  const checkIfGameOver = (newScore) => {
-      if (newScore >= 12) {
-        alert("You win!");
-        resetGame();
-      }
   };
 
-  const addCurrentAndBestScore = (newScore) => {
+  const updateCurrentAndBestScore = (newScore) => {
     setScore({
       ...score,
       currentScore: newScore,
@@ -81,7 +74,7 @@ function App() {
     });
   };
 
-  const addCurrentScore = (newScore) => {
+  const updateCurrentScore = (newScore) => {
     setScore({
       ...score,
       currentScore: newScore,
@@ -95,6 +88,13 @@ function App() {
     });
   };
 
+  const checkIfGameOver = (newScore) => {
+    if (newScore >= 12) {
+      alert("You win!");
+      resetGame();
+    }
+  };
+
   const resetGame = () => {
     setScore({
       bestScore: 0,
@@ -102,7 +102,7 @@ function App() {
     });
   };
 
-    // pop up for directions and best score
+    // directions pop up
     const toggleDirections = () => {
       setShowDirections({
         show: !showDirections.show,
