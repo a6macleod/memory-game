@@ -19,7 +19,13 @@ function App() {
     bestScore: 0,
   });
 
-  const [allCards, setallCards] = useState(cardHandlers.cardBuilder);
+  const [allCards, setAllCards] = useState(cardHandlers.cardBuilder);
+
+  // Shuffle the cards 1x on load
+  useEffect(() => {
+    console.log('useEffect called');
+    setAllCards(cardHandlers.shuffleCards(allCards));
+  }, [allCards]);
 
   // card functions
   function checkIfClicked(card) {
@@ -28,7 +34,7 @@ function App() {
     } else {
       cardWasAlreadyClicked();
     }
-    setallCards(cardHandlers.shuffleCards(allCards));
+    setAllCards(cardHandlers.shuffleCards(allCards));
   };
 
   function clickCard(card) {
@@ -36,40 +42,52 @@ function App() {
     addPoint();
   }
 
+  function markCardAsClicked(card) {
+    setAllCards(...allCards, card.clicked = true);
+  }
+
   function cardWasAlreadyClicked() {
-    setallCards(cardHandlers.resetClickedCards(allCards));
+    setAllCards(cardHandlers.resetClickedCards(allCards));
     endRound();
   }
 
-  function markCardAsClicked(card) {
-    setallCards(...allCards, card.clicked = true);
+  // score keeping
+  const addPoint = () => {
+    const newScore = score.currentScore + 1;
+    checkIfNewBestScore(newScore);
+    checkIfGameOver(newScore);
+  };
+
+  const checkIfNewBestScore = (newScore) => {
+    if (newScore > score.bestScore) {
+      addCurrentAndBestScore(newScore);
+    } else {
+      addCurrentScore(newScore);
+    }
   }
 
-   // card functions
-  //  const checkIfClicked = (item) => {
-  //   if (item.clicked) {
-  //     setallCards(resetClickedCards(allCards));
-  //     endRound();
-  //   } else {
-  //     item.clicked = true;
-  //     addPoint();
-  //   }
-  //   setallCards(cardShuffler(allCards));
-  // };
+  const checkIfGameOver = (newScore) => {
+      if (newScore >= 12) {
+        alert("You win!");
+        resetGame();
+      }
+  };
 
-  // Shuffles the cards 1x on load and after cards stat is updated.
-  useEffect(() => {
-    setallCards(cardHandlers.shuffleCards(allCards));
-  }, [allCards]);
-
-  // pop up for directions and best score
-  const toggleDirections = () => {
-    setShowDirections({
-      show: !showDirections.show,
+  const addCurrentAndBestScore = (newScore) => {
+    setScore({
+      ...score,
+      currentScore: newScore,
+      bestScore: newScore,
     });
   };
 
-  // score keeping functions
+  const addCurrentScore = (newScore) => {
+    setScore({
+      ...score,
+      currentScore: newScore,
+    });
+  };
+
   const endRound = () => {
     setScore({
       ...score,
@@ -77,41 +95,19 @@ function App() {
     });
   };
 
-  const endGame = () => {
-    setallCards(cardHandlers.resetClickedCards(allCards));
+  const resetGame = () => {
     setScore({
       bestScore: 0,
       currentScore: 0,
     });
   };
 
-  const addPoint = () => {
-    const updatedScore = score.currentScore + 1;
-    if (updatedScore > score.bestScore) {
-      addCurrentAndBestScore(updatedScore);
-      if (updatedScore === 12) {
-        alert("You win!");
-        endGame();
-      }
-    } else {
-      addCurrentScore(updatedScore);
-    }
-  };
-
-  const addCurrentScore = (updatedScore) => {
-    setScore({
-      ...score,
-      currentScore: updatedScore,
-    });
-  };
-
-  const addCurrentAndBestScore = (updatedScore) => {
-    setScore({
-      ...score,
-      currentScore: updatedScore,
-      bestScore: updatedScore,
-    });
-  };
+    // pop up for directions and best score
+    const toggleDirections = () => {
+      setShowDirections({
+        show: !showDirections.show,
+      });
+    };
 
   return (
     <div className="App">
