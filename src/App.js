@@ -21,13 +21,11 @@ function App() {
 
   const [allCards, setAllCards] = useState(cardHandlers.cardBuilder);
 
-  // Shuffle the cards 1x on load
+  // Shuffle the cards on page load
   useEffect(() => {
-    console.log('useEffect called');
     setAllCards(cardHandlers.shuffleCards(allCards));
   }, [allCards]);
 
-  // card functions
   function checkIfClicked(card) {
     if (!card.clicked) {
       clickCard(card);
@@ -86,7 +84,6 @@ function App() {
     });
   };
 
-  // directions pop up
   function toggleDirections() {
     setShowDirections({
       show: !showDirections.show,
