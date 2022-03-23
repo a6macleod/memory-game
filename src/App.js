@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-// CSS
+
 import "./App.css";
-// components
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Gameboard from "./components/Gameboard";
 import Directions from "./components/Directions";
-// card handlers
+
 import cardHandlers from "./utils/cardHandlers";
 
 function App() {
@@ -51,62 +51,47 @@ function App() {
     endRound();
   }
 
-  const addPoint = () => {
+  function addPoint() {
     const newScore = score.currentScore + 1;
     updateScore(newScore);
     checkIfGameOver(newScore);
   };
-/*
-  const checkIfNewBestScore = (newScore) => {
-    if (newScore > score.bestScore) {
-      updateCurrentAndBestScore(newScore);
-    } else {
-      updateCurrentScore(newScore);
-    }
-  };
-*/
-  const updateScore = (newScore) => {
+
+  function updateScore(newScore) {
     setScore({
       ...score,
       currentScore: newScore,
       bestScore: score.bestScore < newScore ? newScore : score.bestScore,
     });
   };
-/*
-  const updateCurrentScore = (newScore) => {
-    setScore({
-      ...score,
-      currentScore: newScore,
-    });
-  };
-*/
-  const endRound = () => {
+
+  function endRound() {
     setScore({
       ...score,
       currentScore: 0,
     });
   };
 
-  const checkIfGameOver = (newScore) => {
+  function checkIfGameOver(newScore) {
     if (newScore >= 12) {
       alert("You win!");
       resetGame();
     }
   };
 
-  const resetGame = () => {
+  function resetGame() {
     setScore({
       bestScore: 0,
       currentScore: 0,
     });
   };
 
-    // directions pop up
-    const toggleDirections = () => {
-      setShowDirections({
-        show: !showDirections.show,
-      });
-    };
+  // directions pop up
+  function toggleDirections() {
+    setShowDirections({
+      show: !showDirections.show,
+    });
+  };
 
   return (
     <div className="App">

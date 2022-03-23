@@ -2,207 +2,204 @@
 
 /* global styling */
 * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-		Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-		"Segoe UI Symbol";
-	font-weight: 400;
-	color: hsl(0, 20%, 15%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 400;
+  color: hsl(0, 20%, 15%);
 }
 
 .App {
-	font-size: 16px;
-	background: linear-gradient(hsl(0, 10%, 90%), hsl(40, 10%, 85%));
-	min-height: 100vh;
+  font-size: 16px;
+  background: linear-gradient(hsl(0, 10%, 90%), hsl(40, 10%, 85%));
+  min-height: 100vh;
 }
 
 /* four cards wide - max width for game cards */
 .container {
-	max-width: 1360px;
-	margin: 0 auto;
+  max-width: 1360px;
+  margin: 0 auto;
 }
 
 /* three cards wide */
 @media (max-width: 1351px) {
-	.container {
-		max-width: 1030px;
-	}
+  .container {
+    max-width: 1030px;
+  }
 }
 
 /* two cards wide */
 @media (max-width: 1017px) {
-	.container {
-		max-width: 700px;
-	}
+  .container {
+    max-width: 700px;
+  }
 }
-
-/* one card wide is below at the header component */
 
 /* Header Component */
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 12px 100px 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 100px 0 100px;
 }
 
 .header h1 {
-	font-size: 32px;
-	font-weight: bold;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 /* header - score container */
 .score-container {
-	text-align: right;
+  text-align: right;
 }
 
 .score-container h4:first-child {
-	padding-bottom: 5px;
+  padding-bottom: 5px;
 }
 
 .score-container span {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .header .directions-button {
-	margin-top: 12px;
-	font-size: 12px;
-	padding: 5px 10px;
-	border-radius: 5px;
-	text-decoration: none;
-	color: hsl(0, 20%, 15%);
-	border: solid 1px hsla(0, 0%, 0%, 0%);
-	background-color: hsl(0, 10%, 90%);
+  margin-top: 12px;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: hsl(0, 20%, 15%);
+  border: solid 1px hsla(0, 0%, 0%, 0%);
+  background-color: hsl(0, 10%, 90%);
 }
 
 .header .directions-button:hover {
-	background-color: hsl(110, 50%, 70%);
-	border: solid 1px hsl(110, 90%, 20%);
-	color: hsl(110, 100%, 10%);
+  background-color: hsl(110, 50%, 70%);
+  border: solid 1px hsl(110, 90%, 20%);
+  color: hsl(110, 100%, 10%);
 }
 
 /* Cards Component */
 .Cards-section {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cards-container {
-	width: 90%;
-	padding: 8px;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, 300px);
+  width: 90%;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
 }
 
 .card {
-	padding: 5px;
-	border-radius: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 img {
-	width: 100%;
-	border-radius: 5px;
+  width: 100%;
+  border-radius: 5px;
 }
 
 /* two cards wide - smallest size */
 @media (max-width: 684px) {
-	.header {
-		max-width: 270px;
-		margin-left: 35px;
-	}
+  .header {
+    max-width: 270px;
+    margin-left: 35px;
+  }
 
-	.header h1 {
-		font-size: 24px;
-	}
+  .header h1 {
+    font-size: 24px;
+  }
 
-	.container {
-		max-width: 350px;
-	}
+  .container {
+    max-width: 350px;
+  }
 
-	.header {
-		padding: 12px 10px;
-	}
+  .header {
+    padding: 12px 10px;
+  }
 
-	.cards-container {
-		grid-template-columns: repeat(auto-fill, 270px);
-		padding-left: 20px;
-	}
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, 270px);
+    padding-left: 20px;
+  }
 }
 
 /* Very small screens - alignments */
 @media (max-width: 335px) {
-	.header {
-		margin-left: 5px;
-		margin-right: 5px;
-	}
+  .header {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 
-	.cards-container {
-		grid-template-columns: repeat(auto-fill, 200px);
-		padding-left: 15px;
-	}
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, 200px);
+    padding-left: 15px;
+  }
 }
 
 /* Directions Component */
 .directions-container {
-	margin-top: 40px;
-	margin-bottom: 60px;
+  margin-top: 40px;
+  margin-bottom: 60px;
 }
 
 .directions-container,
 .directions {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .directions-container h2 {
-	font-size: 20px;
+  font-size: 20px;
 }
 
 .directions {
-	margin-top: 20px;
-	margin-bottom: 20px;
-	max-width: 30em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 30em;
 }
 
 .directions p {
-	line-height: 2;
-	margin-bottom: 20px;
+  line-height: 2;
+  margin-bottom: 20px;
 }
 
 .directions button {
-	padding: 10px 20px;
-	font-size: 18px;
-	border-radius: 10px;
-	background-color: hsl(110, 50%, 70%);
-	border: solid 1px hsl(110, 90%, 20%);
-	color: hsl(110, 100%, 10%);
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  background-color: hsl(110, 50%, 70%);
+  border: solid 1px hsl(110, 90%, 20%);
+  color: hsl(110, 100%, 10%);
 }
 
 /* Footer component */
 .footer {
-	display: flex;
-	justify-content: center;
-	padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
 }
 
 .footer a {
-	padding-left: 5px;
-	color: hsl(0, 20%, 15%);
-	text-decoration: none;
+  padding-left: 5px;
+  color: hsl(0, 20%, 15%);
+  text-decoration: none;
 }
 
 .footer a:hover {
-	text-decoration: underline;
-	color: hsl(220, 90%, 50%);
+  text-decoration: underline;
+  color: hsl(220, 90%, 50%);
 }
