@@ -51,13 +51,12 @@ function App() {
     endRound();
   }
 
-  // score keeping
   const addPoint = () => {
     const newScore = score.currentScore + 1;
-    checkIfNewBestScore(newScore);
+    updateScore(newScore);
     checkIfGameOver(newScore);
   };
-
+/*
   const checkIfNewBestScore = (newScore) => {
     if (newScore > score.bestScore) {
       updateCurrentAndBestScore(newScore);
@@ -65,22 +64,22 @@ function App() {
       updateCurrentScore(newScore);
     }
   };
-
-  const updateCurrentAndBestScore = (newScore) => {
+*/
+  const updateScore = (newScore) => {
     setScore({
       ...score,
       currentScore: newScore,
-      bestScore: newScore,
+      bestScore: score.bestScore < newScore ? newScore : score.bestScore,
     });
   };
-
+/*
   const updateCurrentScore = (newScore) => {
     setScore({
       ...score,
       currentScore: newScore,
     });
   };
-
+*/
   const endRound = () => {
     setScore({
       ...score,

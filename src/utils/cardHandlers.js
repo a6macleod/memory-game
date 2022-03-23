@@ -1,7 +1,6 @@
 import allImages from './imagesImporter'
 
 const cardHandlers = {
-
   shuffleCards: (cards) => {
     cards.forEach((card) => (card.index = Math.random() * 100));
     return cards.sort((a, b) => (a.index > b.index ? 1 : -1));
