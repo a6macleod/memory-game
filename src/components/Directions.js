@@ -6,8 +6,10 @@ const Directions = ({ toggleDirections }) => {
       <h2>Directions</h2>
       <div className="directions">
         <p>
-          Click the images to score a point. Try not to click the same one twice
-          or your score will reset! Click all 12 images in one go and win!
+          Click the images to score a point! Click all 12 images only once and win!
+        </p>
+        <p>
+          Try not to click the same image twice or your score will reset!
         </p>
         <button className="ok-button directions-button" onClick={() => toggleDirections()}>
           OK!

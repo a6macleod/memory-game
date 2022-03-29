@@ -177,11 +177,11 @@ img {
 .directions p {
   line-height: 2;
   margin-bottom: 20px;
+  align-self: flex-start;
 }
 
 .directions button {
   padding: 1em 2em;
-  /* background-color: hsl(0, 20%, 15%); */
   color: hsl(0, 20%, 15%);
   font-size: 1em;
   border: solid 1px hsl(0, 20%, 15%);
