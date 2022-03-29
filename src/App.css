@@ -66,7 +66,7 @@ body {
   font-weight: bold;
 }
 
-.header .directions-button {
+.directions-button {
   margin-top: 12px;
   font-size: 12px;
   padding: 5px 10px;
@@ -75,12 +75,14 @@ body {
   color: hsl(0, 20%, 15%);
   border: solid 1px hsla(0, 0%, 0%, 0%);
   background-color: hsl(0, 10%, 90%);
+  transition: box-shadow 0.4s, background-color 0.3s, border 0.3s;
 }
 
-.header .directions-button:hover {
-  background-color: hsl(110, 50%, 70%);
-  border: solid 1px hsl(110, 90%, 20%);
-  color: hsl(110, 100%, 10%);
+.directions-button:hover {
+  background-color: hsl(0, 0%, 83%);
+  border: solid 1px hsl(100, 5%, 12%);
+  cursor: pointer;
+  box-shadow: 0 3px 10px hsl(100, 5%, 12%);
 }
 
 /* Cards Component */
@@ -178,12 +180,15 @@ img {
 }
 
 .directions button {
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 10px;
-  background-color: hsl(110, 50%, 70%);
-  border: solid 1px hsl(110, 90%, 20%);
-  color: hsl(110, 100%, 10%);
+  padding: 1em 2em;
+  /* background-color: hsl(0, 20%, 15%); */
+  color: hsl(0, 20%, 15%);
+  font-size: 1em;
+  border: solid 1px hsl(0, 20%, 15%);
+}
+
+.directions button:hover {
+  color: hsl(0, 20%, 15%);
 }
 
 /* Footer component */
