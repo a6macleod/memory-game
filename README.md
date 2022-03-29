@@ -11,3 +11,23 @@ The goal of this game is to click all the images only one time. Each time an ima
 At the top of the page the current score is kept. Each time you click an image for the first time your current score will increase.
 
 If you are playing for the first time or you are reaching your highest score, the "best score" will also increase with your "score". But if you click a picture twice, your best score will remain while your score will reset to zero.
+
+## Installation
+
+Clone a copy of the repository
+
+```bash
+git clone https://github.com/a6macleod/memory-game
+```
+
+Add the dependencies
+
+```bash
+npm install
+```
+
+navigate to the Memory-Game project using the terminal and start the server
+
+```bash
+npm start
+```
